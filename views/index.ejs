@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="<%= locals.data ? data.list[0].weather[0].main.toLowerCase() : 'default' %>">
+
+    <h1>Weather Forecast</h1>
+
+    <form action="/report" method="POST">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Check Weather</button>
+    </form>
+
+    <% if (locals.error) { %>
+        <p class="error-msg"><%= error %></p>
+    <% } %>
+
+    <% if (locals.data) { %>
+        <h2>Weather in <%= data.city.name %></h2>
+        <h3>
+            <%= new Date(data.list[0].dt_txt).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) %>
+        </h3>
+
+        <div class="forecast-container">
+            <% data.list.forEach(day => { %>
+                <div class="weather-card">
+                    <h3><%= new Date(day.dt_txt).toLocaleDateString('en-GB', { weekday: 'short' }) %></h3>
+                    <img src="http://openweathermap.org/img/wn/<%= day.weather[0].icon %>@2x.png" alt="icon">
+                    <p><%= Math.round(day.main.temp) %>°C</p>
+                    <p><%= day.weather[0].description %></p>
+                </div>
+            <% }); %>
+        </div>
+    <% } %>
+
+</body>
+</html>
