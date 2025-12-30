@@ -1,25 +1,25 @@
 # Weather App
 
-A real-time weather application built with Node.js that provides current weather information for any city using a public weather API.
+A dynamic Node.js weather application that provides a **5-Day Weather Forecast** for any city. It features a modern, glassmorphism UI that changes themes based on the weather conditions.
 
 ## Tech Stack
 
-- **View Engine:** [EJS](https://ejs.co/) (Embedded JavaScript templates)
+- **Frontend:** [EJS](https://ejs.co/), CSS3 (Variables, Flexbox, Glassmorphism)
 - **Backend:** [Express.js](https://expressjs.com/)
 - **HTTP Client:** [Axios](https://axios-http.com/)
 - **Environment:** Node.js
 
 ## Features
 
-- Search for current weather data by city name.
-- Displays temperature, humidity, wind speed, and weather descriptions.
-- Dynamic rendering of weather icons and data.
-- Error handling for invalid city names or API failures.
+- **5-Day Forecast:** Displays daily weather summaries for the next 5 days (cherry-picked for 12:00 PM).
+- **Dynamic Themes:** Background and text colors adapt to weather conditions (Clear, Clouds, Rain, Snow, Thunderstorm).
+- **Robust Error Handling:** Gracefully handles invalid city names and API errors.
+- **Responsive Design:** Beautiful glassmorphism cards that look great on any device.
 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) installed on your machine.
-- An API key from a public weather provider (e.g., OpenWeatherMap).
+- An API key from [OpenWeatherMap](https://openweathermap.org/api).
 
 ## Installation
 
@@ -42,9 +42,11 @@ A real-time weather application built with Node.js that provides current weather
 
 ## Usage
 
-1. Start the server:
+1. Start the server (development mode with nodemon):
    ```bash
-   nodemon index.js
+   npm run dev
+   # OR simply
+   npx nodemon index.js
    ```
 
 2. Open your browser and navigate to:
@@ -52,15 +54,17 @@ A real-time weather application built with Node.js that provides current weather
    http://localhost:3000
    ```
 
-3. Enter a city name in the search bar to get the current weather report.
+3. Enter a city name to see the 5-day forecast with the theming in action!
 
 ## Project Structure
 
 ```text
-├── public/          # Static files (CSS, Images)
-├── views/           # EJS templates
-│   └── index.ejs    # Main application view
-├── index.js           # Express server and API logic
-├── package.json     # Project dependencies
-└── .env             # Environment variables
+├── public/
+│   └── styles/
+│       └── main.css   # Main stylesheet with dynamic themes
+├── views/
+│   └── index.ejs      # EJS template
+├── index.js           # Server logic (Express + API integration)
+├── package.json       # Dependencies
+└── .env               # Environment variables
 ```
